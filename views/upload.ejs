@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Upload</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/edit.css">
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="row" >
+				<h1 style="text-align:center">Upload</h1>
+				<div style="width: 30%; margin: 25px auto;">
+					<form action="/" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="category">CATEGORY</label>
+							<select name="category" class="form-control" id="category">
+								<option>SELECT</option>
+								<option>SOFA</option>
+								<option>CHAIR</option>
+								<option>TABLE</option>
+								<option>BED</option>
+								<option>ALMIRAH</option>
+								<option>DECORATIONS</option>
+							</select>
+						</div>
+					    <div class="form-group">
+							<label for="fileinput">INPUT IMAGE</label>
+							<input type="file" name="fileinput" accept="image/*" id="fileinput" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="details">PRODUCT DETAILS</label>
+							<textarea name="details" id=details rows="5" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="price">PRICE</label>
+							<input type="text" name="price" id="price" class="form-control" placeholder="price">
+						</div>
+						<div class="form-group">
+							<label for="ctime">Completion Time</label>
+							<input type="text" name="ctime" id="ctime" class="form-control" placeholder="Completion Time">
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								 <button type="submit" class="btn-inline btn-lg btn-primary">Upload</button>
+							</div>
+							<div class="col-md-4 col-md-offset-4 col-xs-12">
+					            <a href="/"><button type="button" class="btn-inline btn-lg btn-warning">Finish</button> </a>
+							</div>
+						</div>
+					   
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>  
+</body>
+</html>

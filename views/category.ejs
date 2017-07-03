@@ -1,0 +1,25 @@
+<% include partials/header %>
+
+<div class="container">
+	<div class="well well-sm">
+	<div class="page-header">
+		<h1 class="text-center"><%= cat %></h1>
+	</div>
+	</div>
+  <% if(cats.length!=0){ %>
+	<% cats.forEach(function(category){ %>
+	     <div class="row">
+			<div class="col-sm-3">
+				<a href="/<%=cat%>/<%=category._id%>"><img src="./<%= category.file %>" alt="image"></a>
+			</div>
+			<div class="col-sm-9">
+			     <p><%= category.details %></p>
+			</div>
+		</div>
+	<% }) } else {%>
+	<h1>Items not added yet</h1>
+	<% } %>
+</div>
+
+
+<% include partials/footer %>

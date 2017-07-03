@@ -1,0 +1,42 @@
+#brandimg {
+	height: 30px;
+	width: 40px;
+}
+
+.image{
+	height:auto;
+	width:100%;
+}
+
+.thumbnail{
+	padding: 0;
+	margin: 0;
+	border:0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+ 
+    margin: 0 auto -30px;
+}
+
+#push,
+#footer {
+    height: 50px;
+}
+
+#footer {
+    background-color: black;
+    color: white;
+}
+
+.btntxt{
+	color: white;
+}
