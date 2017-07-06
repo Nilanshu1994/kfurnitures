@@ -34,6 +34,9 @@
 					<p><%= items.furid.details %></p>
 		           	<h3 class="pull-right">₹ <%= items.furid.price %></h3>
 		        	<h5>Completion Time: <%= items.furid.ctime %></h5>
+		        	<form action="/cart/<%= items._id %>?_method=delete" method="post">
+		             <button type="submit" class="btn btn-danger">Remove</button>
+		        	</form>
 				</div>	     
 			</div>
 		</div>

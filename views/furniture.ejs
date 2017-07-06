@@ -1,19 +1,4 @@
 <% include partials/header %>
-<div class="container">
-    <div id="succ">
-        <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5>Item successfully added to cart</h5>
-        </div>
-    </div>
-    <div id="err">
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5>Item already present in the cart</h5>
-        </div>
-    </div>
-    
-</div>
 
 <div class="container">	
 	<div class="row">
@@ -39,8 +24,10 @@
                                 </form>
 	        	   	
 	        	   	<% }else{%>
-	        	   	<button type="button" class="btn btn-primary" id="addtocart" name="<%=furn._id%>">ADD</button>
-
+	        	   	<form action="/addcart" method="post">
+	        	   	<input type="text" name="fid" value="<%=furn._id%>" id="succ">
+	        	   		<button type="submit" class="btn btn-primary">ADD</button>
+	        	   	</form>
 	        	   	<% } } %>
                          
 	        	   	

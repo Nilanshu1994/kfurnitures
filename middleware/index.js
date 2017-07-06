@@ -38,8 +38,8 @@ dbcheck: function(req,res,next){
 					}
 					else{
 						if(carts.length){
-							console.log("notadded");
-							res.send("notadded");
+							req.flash("error","Item Already in the cart");
+							res.redirect("back");
 			                 
 							}
 						else{

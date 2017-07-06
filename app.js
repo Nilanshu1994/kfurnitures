@@ -129,6 +129,7 @@ app.get("/cart",middleware.isLoggedin,function(req,res){
 });
 
 app.post("/addcart",middleware.isLoggedin,middleware.dbcheck,function(req,res){
+              console.log(req.body.fid);
               cart.create({
 					furid: req.body.fid,
 					userid: req.user._id        	
@@ -136,11 +137,25 @@ app.post("/addcart",middleware.isLoggedin,middleware.dbcheck,function(req,res){
 			         	if(err){
 			         		console.log(err);                               // IMPORTANT
 			         	}
-			         	else{ console.log("Added item to cart");
-                            res.send("success");
+			         	else{ 
+			         		req.flash("success","Successfully added item to cart");
+                            res.redirect("back");
 			         	}
 			         });
 });
+
+app.delete("/cart/:id", middleware.isLoggedin , function(req, res){
+	cart.findByIdAndRemove(req.params.id, function(err,furn){
+		if(err)
+		{
+			console.log(err);
+		}
+		else{
+			req.flash("success","Item Removed from cart");
+			res.redirect("/cart");
+		}
+	})
+})
 
 app.get("/:category" , function(req,res){
 	var cat =req.params.category;
