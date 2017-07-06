@@ -1,4 +1,5 @@
-var cart = require("../models/cart");
+var cart = require("../models/cart"),
+    user = require("../models/user");
 
 module.exports = {
  isLoggedin:  function(req, res, next){
@@ -48,5 +49,18 @@ dbcheck: function(req,res,next){
 					}
 				});
 
-			}
+			},
+
+ checkuser: function(req,res,next){
+ 	             user.find({username : req.body.username},function(err,users){
+ 	             	if(users.length){
+                          req.flash("error","A user with this username is already registered please choose another");
+                          res.redirect("back");
+ 	             	}
+ 	             	else{
+ 	             		next();
+ 	             	}
+ 	             })
+
+ }			
 };

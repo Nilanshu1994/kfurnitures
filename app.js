@@ -75,7 +75,7 @@ app.get("/register",function(req,res){
 	res.render("register");
 })
 
-app.post("/register",function(req,res){
+app.post("/register",middleware.checkuser,function(req,res){
 	user.register(new user({username: req.body.username , address: req.body.address}), req.body.password, function(err , user){
 		if(err)
 		{
