@@ -7,7 +7,8 @@ var cartschema = new mongoose.Schema({
          },
     furid: {type: mongoose.Schema.Types.ObjectId,
          ref: "fur"
-     }
+     },
+     username: String
 });
 
 

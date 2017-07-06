@@ -22,18 +22,18 @@
 			</div>
             <div class="collapse navbar-collapse" id="a">
             	<ul class="nav navbar-nav navbar-right">
-            	   <%# <li>
-            		    <form action="#" method="get" class="navbar-form" role="search">
+            	<% if(currentuser && currentuser.username === ("admin")){ %>
+            	   <li>
+            		    <form action="/carts" method="post" class="navbar-form" role="search">
             		        <div class="form-group">
             		        	<input class="form-control" type="text" name="search" placeholder="Search term">
             		        </div>
             		    	
-	            		    <button type="button" class="btn btn-default">Search</button>
-            		    </form>
-	            		    
-            		</li>%>
+	            		    <button type="submit" class="btn btn-default">Search</button>
+            		    </form>	    
+            		</li>
             		
-            		<% if(currentuser && currentuser.username === ("admin")){ %>
+            		
             		    <li><a href="/upload">Upload</a></li>
             		<% } %>
             		<% if(currentuser) { if(currentuser.username !== ("admin")) { %>

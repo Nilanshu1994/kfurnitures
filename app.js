@@ -75,6 +75,18 @@ app.get("/register",function(req,res){
 	res.render("register");
 })
 
+ app.post("/carts",middleware.checkusernames,function(req,res){
+ 	cart.find({username: req.body.search}).populate("furid").exec(function(err,carts){
+		if(err){
+			console.log(err);
+		}
+		else{ 
+			res.render("cart",{carts:carts, uname: req.body.search});
+		     }
+}) 
+
+ });
+
 app.post("/register",middleware.checkuser,function(req,res){
 	user.register(new user({username: req.body.username , address: req.body.address}), req.body.password, function(err , user){
 		if(err)
@@ -129,13 +141,13 @@ app.get("/cart",middleware.isLoggedin,function(req,res){
 });
 
 app.post("/addcart",middleware.isLoggedin,middleware.dbcheck,function(req,res){
-              console.log(req.body.fid);
               cart.create({
 					furid: req.body.fid,
-					userid: req.user._id        	
+					userid: req.user._id,
+					username : req.user.username       	
 			         },function(err,carts){
 			         	if(err){
-			         		console.log(err);                               // IMPORTANT
+			         		console.log(err);                            
 			         	}
 			         	else{ 
 			         		req.flash("success","Successfully added item to cart");
@@ -228,7 +240,7 @@ app.delete("/:category/:id", middleware.privilage , function(req, res){
 })
 
 
-    
+
 
 //=========================================================
 

@@ -62,5 +62,19 @@ dbcheck: function(req,res,next){
  	             	}
  	             })
 
- }			
+ },
+
+ checkusernames : function(req,res,next){
+ 	            
+ 	             user.find({username : req.body.search},function(err,users){
+ 	             	if(users.length){
+                          next();
+ 	             	}
+ 	             	else{	
+ 	             		req.flash("error","No user with this username");
+                         res.redirect("back");
+ 	             	}
+ 	             })
+
+ }						
 };

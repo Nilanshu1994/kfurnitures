@@ -1,29 +1,16 @@
 <% include partials/header %>
 
-
-<div class="container">
-	<div style = "display:none">
-		<div class="alert alert-success alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h5></h5>
-		</div>
-	</div>
-	<div style = "display:none">
-		<div class="alert alert-danger alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h5></h5>
-		</div>
-	</div>
-	
-</div>
-
 <div class="container" id="abc">
 	<div class="well well-sm">
 	<div class="page-header">
-		<h1 class="text-center"><%= currentuser.username %>'s Cart</h1>
+	<% if(currentuser && currentuser.username === "admin") { %>
+		<h3 class="text-center"><%= uname %>'s Cart</h3>
+	<% }else{ %>
+	<h3 class="text-center"><%= currentuser.username %>'s Cart</h3>
+	<% } %>
 	</div>
 	</div>
-  <% if(carts.length!=0){ %>
+  <% if(carts.length){ %>
 	<% carts.forEach(function(items){ %>
 	    <div class="row">
 			<div class="col-sm-4">
@@ -34,14 +21,18 @@
 					<p><%= items.furid.details %></p>
 		           	<h3 class="pull-right">₹ <%= items.furid.price %></h3>
 		        	<h5>Completion Time: <%= items.furid.ctime %></h5>
+
+                    <% if(currentuser && currentuser.username !== ("admin")){ %>
 		        	<form action="/cart/<%= items._id %>?_method=delete" method="post">
 		             <button type="submit" class="btn btn-danger">Remove</button>
 		        	</form>
+                    <% } %>
+                       
 				</div>	     
 			</div>
 		</div>
 	<% }) }else{%>
-	<h1>You have Not added anything to the cart</h1>
+	<h3>You have Not added anything to the cart</h3>
 	<% } %>
 </div>
 
