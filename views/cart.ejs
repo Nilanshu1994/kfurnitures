@@ -1,1 +1,53 @@
-<h1>This is your cart</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cart</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/edit.css">
+</head>
+<body>
+
+
+<div class="container">
+	<div style = "display:none">
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h5></h5>
+		</div>
+	</div>
+	<div style = "display:none">
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h5></h5>
+		</div>
+	</div>
+	
+</div>
+
+<div class="container" id="abc">
+	<div class="well well-sm">
+	<div class="page-header">
+		<h1 class="text-center"><%= currentuser.username %>'s Cart</h1>
+	</div>
+	</div>
+  <% if(carts.length!=0){ %>
+	<% carts.forEach(function(items){ %>
+	    <div class="row">
+			<div class="col-sm-4">
+				<a href="/<%=items.furid.category%>/<%=items.furid._id%>"><img src="<%= items.furid.file %>" alt="image"></a>
+			</div>
+			<div class="col-sm-8">
+				<div class="jumbotron">
+					<p><%= items.furid.details %></p>
+		           	<h3 class="pull-right">₹ <%= items.furid.price %></h3>
+		        	<h5>Completion Time: <%= items.furid.ctime %></h5>
+				</div>	     
+			</div>
+		</div>
+	<% }) }else{%>
+	<h1>You have Not added anything to the cart</h1>
+	<% } %>
+</div>
+
+</body>
+</html>

@@ -9,11 +9,14 @@
   <% if(cats.length!=0){ %>
 	<% cats.forEach(function(category){ %>
 	     <div class="row">
-			<div class="col-sm-3">
-				<a href="/<%=cat%>/<%=category._id%>"><img src="./<%= category.file %>" alt="image"></a>
+			<div class="col-sm-4">
+				<a href="/<%=cat%>/<%=category._id%>"><img src="<%= category.file %>" alt="image"></a>
 			</div>
-			<div class="col-sm-9">
-			     <p><%= category.details %></p>
+			<div class="col-sm-8">
+			<div class="jumbotron">
+				<p id="fsize"><%= category.details %></p>
+			</div>
+			     
 			</div>
 		</div>
 	<% }) } else {%>

@@ -1,10 +1,25 @@
 <% include partials/header %>
+<div class="container">
+    <div id="succ">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h5>Item successfully added to cart</h5>
+        </div>
+    </div>
+    <div id="err">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h5>Item already present in the cart</h5>
+        </div>
+    </div>
+    
+</div>
 
 <div class="container">	
 	<div class="row">
         <div class="col-sm-4 col-xs-12">
         	<div class="thumbnail">
-        		<img src="<%= furn.file %>" class="img-responsive" alt="image">
+        		<img src="<%= furn.file %>" class="image" alt="image">
         	</div>
         	
         </div>
@@ -12,19 +27,20 @@
         <div class="col-sm-8 col-xs-12">        	
         	    <div class="jumbotron">
         	       <p><%= furn.details %></p>
-	        	   	<h4 class="pull-right">₹ <%= furn.price %></h4>
-	        	   	<h3>Completion Time: <%# furn.ctime %></h3>
+	        	   	<h3 class="pull-right">₹ <%= furn.price %></h3>
+	        	   	<h5>Completion Time: <%= furn.ctime %></h5>
 
                   
                         <% if(currentuser) { if(currentuser.username === "admin"){ %>
-                               <form action="/delete/<%=furn._id%>?_method=DELETE" method="post">
+                               <form action="/<%=furn.category%>/<%=furn._id%>?_method=DELETE" method="post">
 	        	   	<button type="button" class="btn btn-warning"><a class="btntxt" href="/edit/<%= furn._id %>">EDIT</a></button>
                                 
                                   <button type="submit" class="btn btn-danger">DELETE</button>      
                                 </form>
 	        	   	
 	        	   	<% }else{%>
-	        	   	<button type="button" class="btn btn-primary"><a class="btntxt" href="#">ADD</a></button>
+	        	   	<button type="button" class="btn btn-primary" id="addtocart" name="<%=furn._id%>">ADD</button>
+
 	        	   	<% } } %>
                          
 	        	   	

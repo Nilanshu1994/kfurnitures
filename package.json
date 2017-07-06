@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-, "start": "node app.js" },
+  },
   "author": "Nilanshu Kumar",
   "license": "ISC",
   "dependencies": {
@@ -16,7 +16,6 @@
     "express-session": "^1.15.3",
     "method-override": "^2.3.9",
     "mongoose": "^4.10.7",
-    "multer": "^1.3.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0"

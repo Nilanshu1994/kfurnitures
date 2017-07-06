@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 	<title></title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/edit.css">
-      <script src="/jq/jquery.js" type="text/javascript"></script>
-      <script src="/jq/bootstrap.min.js" type="text/javascript"></script>
+      <link rel="stylesheet" type="text/css" href="/stylesheets/mdb.min.css">
 </head>
 <body>
 <div id="wrap">
@@ -37,7 +36,9 @@
             		<% if(currentuser && currentuser.username === ("admin")){ %>
             		    <li><a href="/upload">Upload</a></li>
             		<% } %>
-            		<% if(currentuser) { %>
+            		<% if(currentuser) { if(currentuser.username !== ("admin")) { %>
+                             <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                             <% } %>
             		    <li><a href="#">Welcome <%= currentuser.username %></a></li>
             		    <li><a href="/logout">Logout</a></li> 
             		
@@ -56,4 +57,16 @@
 		
 	</nav>
 
-
+<div class="container">
+      <% if(success && success.length > 0){ %>
+            <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <%= success %>
+            </div>
+      <% } if(error && error.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <%= error %>
+            </div>
+      <% } %>
+</div>
