@@ -39,8 +39,7 @@ dbcheck: function(req,res,next){
 					}
 					else{
 						if(carts.length){
-							req.flash("error","Item Already in the cart");
-							res.redirect("back");
+							res.send("fail");
 			                 
 							}
 						else{

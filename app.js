@@ -150,8 +150,7 @@ app.post("/addcart",middleware.isLoggedin,middleware.dbcheck,function(req,res){
 			         		console.log(err);                            
 			         	}
 			         	else{ 
-			         		req.flash("success","Successfully added item to cart");
-                            res.redirect("back");
+                           res.send("success");
 			         	}
 			         });
 });
